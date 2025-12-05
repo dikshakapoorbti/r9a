@@ -50,7 +50,7 @@ const ContactForm = () => {
     const phoneDigits = formData.phone.replace(/\D/g, "");
     if (!isValidPhoneDigits(phoneDigits)) newErrors.phone = "Enter a valid phone";
     if (countWords(formData.message) < 2) //for now
-      newErrors.message = "Describe your project in at least 50 words";
+      newErrors.message = "Describe your project in at least 20 words";
 
     if (Object.keys(newErrors).length) {
       setErrors(newErrors);

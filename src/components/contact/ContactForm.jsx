@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { collection, addDoc } from "firebase/firestore";
 import { db, serverTimestamp } from "../../lib/firebase.js";
 
@@ -14,6 +14,7 @@ const ContactForm = () => {
   const [errors, setErrors] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const phoneInputRef = useRef(null);
 
   const countWords = (text) => text.trim().split(/\s+/).filter(Boolean).length;
   const isValidEmail = (email) =>
@@ -114,7 +115,10 @@ const ContactForm = () => {
         <div className="flex gap-3">
           <select
             value={countryCode}
-            onChange={(e) => setCountryCode(e.target.value)}
+            onChange={(e) => {
+              setCountryCode(e.target.value);
+              setTimeout(() => phoneInputRef.current?.focus(), 0);
+            }}
             className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           >
             <option value="+91">India (+91)</option>
@@ -133,6 +137,7 @@ const ContactForm = () => {
                 phone: e.target.value.replace(/[^0-9\s-]/g, ""),
               })
             }
+            ref={phoneInputRef}
             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
             placeholder="Phone number"
           />

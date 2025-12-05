@@ -101,17 +101,16 @@ The `scrollToSection(sectionId)` helper performs `document.getElementById(sectio
 
 ### Forms and external services
 
-- **`ContactForm` (in `App.jsx`)**
+- **`ContactForm` (`src/components/contact/ContactForm.jsx`)**
   - Local `formData` state for `email`, `phone`, `company`, and `message`.
-  - `handleSubmit` uses `fetch` to POST JSON to `http://localhost:5000/api/contact`.
-    - This backend is **not part of this repository**; agents should not assume any server code exists here.
-    - If you change the backend URL or contract, update this hard-coded endpoint and the server accordingly.
-  - Displays a success message and disables the button temporarily after a successful request.
+  - On submit, writes a document into the `contactRequests` collection in **Firebase Firestore** using the client SDK.
+  - Firebase app + Firestore client are initialized in `src/lib/firebase.js` using Vite env vars (`VITE_FIREBASE_*`).
+  - Displays inline error/success messages and disables the button while a submit is in progress.
 
 ## Guidance for Future Changes
 
-- Centralized UI logic currently lives in `src/App.jsx`. If you start splitting components into separate files (e.g. `components/Navigation.jsx`, `pages/HomePage.jsx`), make sure to:
-  - Preserve the state relationships (`currentPage`, `activeSection`, `isMenuOpen`, `isOthersOpen`).
-  - Keep scroll-based section highlighting and IDs in sync with navigation items.
-  - Keep the `ContactForm` backend URL consistent with any separate backend service.
+- Centralized page orchestration now lives in `src/App.jsx`, while UI is split into components (`src/components`) and pages (`src/pages`). When modifying layout, preserve:
+  - The state relationships in `App` (`currentPage`, `activeSection`).
+  - Scroll-based section highlighting and IDs (`home`, `projects`, `contact`) used by navigation.
+- If you change Firestore structure (e.g. collection name or fields), update both `ContactForm` and any external dashboards/queries that read from the same data.
 - Before introducing tests or additional tooling (routing, state management libraries, etc.), update `package.json` scripts so agents can rely on them as the canonical interface for running commands.

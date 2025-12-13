@@ -1,8 +1,11 @@
-import React from "react";
+import React, {useState} from "react";
 import { Code, Brain, Users, Rocket, ChevronRight, Mail, MapPin } from "lucide-react";
 import ContactForm from "../components/contact/ContactForm.jsx";
+import PROJECTS from "../components/constants/project.constant.js";
 
-const HomePage = ({ onScrollToSection }) => {
+const HomePage = ({ onScrollToSection, onNavigateToProject }) => {
+
+
   const scrollTo = (sectionId) => {
     if (onScrollToSection) onScrollToSection(sectionId);
   };
@@ -77,7 +80,7 @@ const HomePage = ({ onScrollToSection }) => {
                           size={32}
                         />
                         <h3 className="font-semibold text-gray-800">
-                          Remote Team
+                          Consulting
                         </h3>
                       </div>
                       <div className="bg-orange-50 p-4 rounded-lg text-center">
@@ -106,8 +109,8 @@ const HomePage = ({ onScrollToSection }) => {
               Our Services
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We deliver cutting-edge technology solutions with a remote-first
-              approach, ensuring global talent and 24/7 productivity.
+             We deliver cutting-edge technology solutions with a customer-centric approach,
+             powered by global talent and 24/7 productivity
             </p>
           </div>
 
@@ -127,7 +130,7 @@ const HomePage = ({ onScrollToSection }) => {
               },
               {
                 icon: Users,
-                title: "Remote Consulting",
+                title: "Consulting",
                 description:
                   "Strategic technology consulting with our distributed team of experts from around the globe.",
               },
@@ -179,56 +182,7 @@ const HomePage = ({ onScrollToSection }) => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                title: "SmartAnalytics AI",
-                category: "Machine Learning",
-                description:
-                  "Advanced predictive analytics platform that increased client revenue by 40% through intelligent data insights.",
-                image: "bg-gradient-to-br from-blue-400 to-blue-600",
-                stats: "40% Revenue Increase",
-              },
-              {
-                title: "CloudSync Platform",
-                category: "Web Development",
-                description:
-                  "Enterprise-grade cloud synchronization solution serving over 100k+ users with 99.9% uptime.",
-                image: "bg-gradient-to-br from-purple-400 to-purple-600",
-                stats: "100k+ Active Users",
-              },
-              {
-                title: "AutoBot Assistant",
-                category: "AI Automation",
-                description:
-                  "Intelligent chatbot system that automated 80% of customer service inquiries with natural language processing.",
-                image: "bg-gradient-to-br from-green-400 to-green-600",
-                stats: "80% Automation Rate",
-              },
-              {
-                title: "EcoTrack Mobile",
-                category: "Mobile App",
-                description:
-                  "Environmental tracking application with IoT integration, featured in top sustainability apps.",
-                image: "bg-gradient-to-br from-orange-400 to-orange-600",
-                stats: "App Store Featured",
-              },
-              {
-                title: "Neural Vision",
-                category: "Computer Vision",
-                description:
-                  "Real-time image recognition system for manufacturing quality control with 99.5% accuracy.",
-                image: "bg-gradient-to-br from-red-400 to-red-600",
-                stats: "99.5% Accuracy",
-              },
-              {
-                title: "BlockChain Ledger",
-                category: "Blockchain",
-                description:
-                  "Secure transaction platform processing $10M+ in digital assets with zero security breaches.",
-                image: "bg-gradient-to-br from-indigo-400 to-indigo-600",
-                stats: "$10M+ Processed",
-              },
-            ].map((project) => (
+            {PROJECTS.map((project) => (
               <div
                 key={project.title}
                 className="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
@@ -248,7 +202,7 @@ const HomePage = ({ onScrollToSection }) => {
                     {project.title}
                   </h3>
                   <p className="text-gray-600 mb-4">{project.description}</p>
-                  <button className="flex items-center text-blue-600 font-medium hover:text-blue-800 transition-colors">
+                  <button onClick={() => onNavigateToProject(project)} className="flex items-center text-blue-600 font-medium hover:text-blue-800 transition-colors">
                     Learn More <ChevronRight size={16} className="ml-1" />
                   </button>
                 </div>

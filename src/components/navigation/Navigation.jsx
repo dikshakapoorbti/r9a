@@ -37,7 +37,20 @@ const Navigation = ({
     <nav className="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-md shadow-lg z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
-          <Logo />
+
+          {/* ✅ LOGO + NAME → HOME */}
+          <div
+            className="flex items-center gap-2 cursor-pointer select-none"
+            onClick={onNavigateHome}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => e.key === "Enter" && onNavigateHome?.()}
+          >
+            <Logo />
+            <span className="text-lg font-semibold text-gray-900">
+              Retrospecta
+            </span>
+          </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8 items-center">
@@ -55,7 +68,7 @@ const Navigation = ({
               </button>
             ))}
 
-            {/* "Others" Dropdown for Desktop (hover to open, then select) */}
+            {/* Others Dropdown */}
             <div
               className="relative"
               onMouseEnter={() => setIsOthersOpen(true)}
@@ -67,7 +80,7 @@ const Navigation = ({
                 aria-haspopup="menu"
                 aria-expanded={isOthersOpen}
               >
-                <span>Others</span>
+                Others
                 <ChevronDown
                   size={16}
                   className={`transform transition-transform ${
@@ -78,20 +91,6 @@ const Navigation = ({
 
               {isOthersOpen && (
                 <div className="absolute top-full left-0 w-56 bg-white border border-gray-200 rounded-md shadow-lg overflow-hidden z-50">
-                  {/*
-                  <a
-                    href="/MGT-7A.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
-                    onClick={() => {
-                      setIsOthersOpen(false);
-                      setIsMenuOpen(false);
-                    }}
-                  >
-                    Annual Return (MGT-7A)
-                  </a>
-                  */}
                   <button
                     onClick={handleCareersClick}
                     className="block w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
@@ -103,7 +102,7 @@ const Navigation = ({
             </div>
           </div>
 
-          {/* Mobile menu button */}
+          {/* Mobile Menu Button */}
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -128,7 +127,7 @@ const Navigation = ({
                 </button>
               ))}
 
-              {/* "Others" Dropdown for Mobile */}
+              {/* Mobile Others */}
               <div>
                 <button
                   onClick={() => setIsOthersOpen(!isOthersOpen)}
@@ -142,19 +141,9 @@ const Navigation = ({
                     }`}
                   />
                 </button>
+
                 {isOthersOpen && (
-                  <div className="ml-4 mt-1 space-y-1">
-                    {/*
-                    <a
-                      href="/MGT-7A.pdf"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block px-3 py-2 text-left text-gray-600 hover:text-blue-600 hover:bg-gray-100 rounded-md text-sm"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      Annual Return (MGT-7A)
-                    </a>
-                    */}
+                  <div className="ml-4 mt-1">
                     <button
                       onClick={handleCareersClick}
                       className="block w-full text-left px-3 py-2 text-gray-600 hover:text-blue-600 hover:bg-gray-100 rounded-md text-sm"

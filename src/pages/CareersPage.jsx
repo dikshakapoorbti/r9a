@@ -10,7 +10,7 @@ const CareersPage = ({ onApplyNow, onBackToHome }) => {
             Join Our Team
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Be part of a remote-first, innovative team that's shaping the future
+            Be part of a innovative team that's shaping the future
             of technology. We believe in talent over location.
           </p>
         </div>
@@ -22,7 +22,7 @@ const CareersPage = ({ onApplyNow, onBackToHome }) => {
             </h2>
             <div className="flex items-center space-x-4 text-blue-100">
               <span className="flex items-center">
-                <Star size={16} className="mr-1" /> Remote Position
+                <Star size={16} className="mr-1" />  Position
               </span>
               <span className="flex items-center">
                 <Award size={16} className="mr-1" /> 6-12 Weeks
@@ -52,7 +52,7 @@ const CareersPage = ({ onApplyNow, onBackToHome }) => {
                       size={16}
                       className="text-blue-600 mt-1 mr-2 flex-shrink-0"
                     />
-                    Collaborate with our global remote team
+                    Collaborate with our global team
                   </li>
                   <li className="flex items-start">
                     <ChevronRight
@@ -111,7 +111,7 @@ const CareersPage = ({ onApplyNow, onBackToHome }) => {
                     </h4>
                     <p className="text-gray-600">
                       Self-motivated, excellent communication skills, and
-                      thrives in a remote, collaborative environment. We value
+                      collaborative environment. We value
                       diversity and inclusion.
                     </p>
                   </div>

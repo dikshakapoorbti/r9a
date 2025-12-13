@@ -86,7 +86,7 @@ The `scrollToSection(sectionId)` helper performs `document.getElementById(sectio
       - Marketing copy explaining Retrospecta's AI and software development focus.
       - Call-to-action buttons "Get Started" (scrolls to `contact`) and "View Projects" (scrolls to `projects`).
       - Right-hand visual card using Lucide icons (`Brain`, `Code`, `Users`, `Rocket`).
-    - **Services section**: three service cards (AI & ML, Software Development, Remote Consulting), generated from a local array and using Lucide icons.
+    - **Services section**: three service cards (AI & ML, Software Development,  Consulting), generated from a local array and using Lucide icons.
     - **Projects section** (`id="projects"`): grid of featured project cards with gradients and metrics; currently static mock data.
     - **Contact section** (`id="contact"`): left column with contact info and right column with `ContactForm` wrapped in a styled panel.
 

@@ -47,9 +47,6 @@ const Navigation = ({
             onKeyDown={(e) => e.key === "Enter" && onNavigateHome?.()}
           >
             <Logo />
-            <span className="text-lg font-semibold text-gray-900">
-              Retrospecta
-            </span>
           </div>
 
           {/* Desktop Navigation */}

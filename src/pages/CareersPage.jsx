@@ -25,7 +25,7 @@ const CareersPage = ({ onApplyNow, onBackToHome }) => {
                 <Star size={16} className="mr-1" /> Remote Position
               </span>
               <span className="flex items-center">
-                <Award size={16} className="mr-1" /> 12 Weeks
+                <Award size={16} className="mr-1" /> 6-12 Weeks
               </span>
               <span className="flex items-center">
                 <Target size={16} className="mr-1" /> Full-time
@@ -141,7 +141,6 @@ const CareersPage = ({ onApplyNow, onBackToHome }) => {
                 Apply Now
               </button>
               <p className="text-gray-500 text-sm mt-2">
-                Application deadline: Oct 31, 2025
               </p>
             </div>
           </div>

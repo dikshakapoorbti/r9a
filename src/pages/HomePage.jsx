@@ -26,7 +26,7 @@ const HomePage = ({ onScrollToSection }) => {
                   </span>
                 </h1>
                 <p className="text-xl text-gray-600 max-w-2xl">
-                  We're a remote-first tech company specializing in cutting-edge
+                  We're a tech company specializing in cutting-edge
                   AI solutions and modern software development. Transform your
                   business with our innovative services.
                 </p>
@@ -288,7 +288,7 @@ const HomePage = ({ onScrollToSection }) => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900">Location</h3>
-                    <p className="text-gray-600">Remote-First Global Team</p>
+                    <p className="text-gray-600"> Global Team</p>
                   </div>
                 </div>
               </div>

@@ -140,7 +140,6 @@ const App = () => {
               <h3 className="text-lg font-semibold mb-4">Contact Info</h3>
               <ul className="space-y-2 text-gray-400">
                 <li>contact@r9a.in</li>
-                <li>Remote-First Global</li>
               </ul>
             </div>
           </div>

@@ -225,7 +225,7 @@ const ProjectDetailsPage = ({ project, onBackToHome }) => {
 
   const getProjectReport = () => {
     const reports = {
-      'SmartAnalytics AI': {
+      'SmartAnalytics AI': { //will add the new one details here as component
         overview: 'A comprehensive machine learning platform that leverages advanced predictive analytics to provide actionable business insights. It integrates multiple data sources and uses sophisticated algorithms to forecast trends, identify patterns, and optimize decision-making processes across various industries.',
         technologies: ['Python', 'TensorFlow', 'Pandas', 'Scikit-learn', 'AWS SageMaker'],
         challenges: 'Handling large-scale data processing and ensuring model accuracy across diverse datasets while maintaining computational efficiency.',

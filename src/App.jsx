@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, lazy, Suspense } from "react";
 import {
   Routes,
   Route,
@@ -8,27 +8,17 @@ import {
 } from "react-router-dom";
 
 import Navigation from "./components/navigation/Navigation.jsx";
-import HomePage from "./pages/HomePage.jsx";
-import CareersPage from "./pages/CareersPage.jsx";
-import ProjectDetailsPage from "./pages/ProjectDetailsPage.jsx";
 import Logo from "./components/Logo.jsx";
 import PROJECTS from "./components/constants/project.constant.js";
 import ScrollToTop from "./ScrollToTop.js";
 
+// Lazy load page components for better initial load performance
+const HomePage = lazy(() => import("./pages/HomePage.jsx"));
+const CareersPage = lazy(() => import("./pages/CareersPage.jsx"));
+const ProjectDetailsWrapper = lazy(() => import('./pages/ProjectDetailsWrapper.jsx'));
 
-/* ---------------- PROJECT ROUTE WRAPPER ---------------- */
 
-const ProjectDetailsWrapper = ({ onBackToHome }) => {
-  const { slug } = useParams();
-  const project = PROJECTS.find((p) => p.slug === slug);
 
-  return (
-    <ProjectDetailsPage
-      project={project}
-      onBackToHome={onBackToHome}
-    />
-  );
-};
 
 /* ---------------- APP ---------------- */
 
@@ -105,34 +95,43 @@ const App = () => {
         onNavigateCareers={handleNavigateCareers}
       />
 
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <HomePage
-              onScrollToSection={scrollToSection}
-              onNavigateToProject={handleNavigateToProject}
-            />
-          }
-        />
+      <Suspense fallback={
+        <div className="flex items-center justify-center min-h-screen">
+          <div className="text-center">
+            <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+            <p className="text-slate-600">Loading...</p>
+          </div>
+        </div>
+      }>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <HomePage
+                onScrollToSection={scrollToSection}
+                onNavigateToProject={handleNavigateToProject}
+              />
+            }
+          />
 
-        <Route
-          path="/careers"
-          element={
-            <CareersPage
-              onApplyNow={handleApplyNow}
-              onBackToHome={handleBackToHome}
-            />
-          }
-        />
+          <Route
+            path="/careers"
+            element={
+              <CareersPage
+                onApplyNow={handleApplyNow}
+                onBackToHome={handleBackToHome}
+              />
+            }
+          />
 
-        <Route
-          path="/project/:slug"
-          element={
-            <ProjectDetailsWrapper onBackToHome={handleBackToHome} />
-          }
-        />
-      </Routes>
+          <Route
+            path="/project/:slug"
+            element={
+              <ProjectDetailsWrapper onBackToHome={handleBackToHome} />
+            }
+          />
+        </Routes>
+      </Suspense>
 
       {/* ---------------- FOOTER ---------------- */}
 

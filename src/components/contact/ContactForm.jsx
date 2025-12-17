@@ -21,6 +21,20 @@ const ContactForm = () => {
     /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.trim());
   const isValidPhoneDigits = (digits) => digits.replace(/\D/g, "").length >= 7;
 
+  // Enhanced security: Check for suspicious patterns (phishing prevention)
+  const containsSuspiciousContent = (text) => {
+    const suspiciousPatterns = [
+      /<script/i,
+      /javascript:/i,
+      /on\w+\s*=/i, // Event handlers like onclick=
+      /<iframe/i,
+      /eval\(/i,
+      /document\./i,
+      /window\./i,
+    ];
+    return suspiciousPatterns.some(pattern => pattern.test(text));
+  };
+
   /*
    Future: Automatic acknowledgement email
    This will be enabled once server-side email infrastructure is ready
@@ -53,6 +67,14 @@ const ContactForm = () => {
     if (countWords(formData.message) < 2) //for now
       newErrors.message = "Describe your project in at least 20 words";
 
+    // Security check: Block suspicious content
+    if (containsSuspiciousContent(formData.email) ||
+        containsSuspiciousContent(formData.company) ||
+        containsSuspiciousContent(formData.message)) {
+      setErrorMessage("Invalid input detected. Please remove any HTML or script content.");
+      return;
+    }
+
     if (Object.keys(newErrors).length) {
       setErrors(newErrors);
       return;
@@ -70,15 +92,40 @@ const ContactForm = () => {
     };
 
     try {
+      // Save to Firebase
       await addDoc(collection(db, "contactRequests"), payload);
-      /*
-        Future: enable auto-ack email
-        await sendAcknowledgementEmail(formData.email.trim(), {
-          subject: "Thanks for contacting Retrospecta",
-          message:
-            "Our team will reach out within 24 to 48 hours regarding your query.",
+
+      // Send email notification to admin
+      try {
+        const emailPayload = {
+          to: "dikshakapoorbti@gmail.com",
+          subject: `New Contact Form Submission from ${formData.email}`,
+          message: `
+New Contact Form Submission:
+
+Email: ${formData.email.trim()}
+Phone: ${phoneE164}
+Company: ${formData.company.trim() || 'N/A'}
+
+Message:
+${formData.message.trim()}
+
+Submitted at: ${new Date().toLocaleString()}
+          `.trim(),
+        };
+
+        // Send email using the proxy endpoint
+        await fetch('/mailer.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(emailPayload),
         });
-      */
+      } catch (emailError) {
+        console.error('Email notification failed:', emailError);
+        // Continue even if email fails - data is saved in Firebase
+      }
 
       setFormData({ email: "", phone: "", company: "", message: "" });
       localStorage.setItem("contact_last_submit_ts", String(Date.now()));

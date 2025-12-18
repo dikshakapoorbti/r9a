@@ -6,6 +6,10 @@ import PROJECTS from "../components/constants/project.constant.js";
 const AiPolicyBot = lazy(() => import("./AiPolicyBot.jsx"));
 const AiKyc = lazy(() => import("./AiKyc.jsx"));
 const AiInsights = lazy(() => import("./AiInsights.jsx"));
+const AiSocialMedia = lazy(() => import("./AiSocialMedia.jsx"));
+const AiRecruitment = lazy(() => import("./AiRecruitment.jsx"));
+const AiSegmentation = lazy(() => import("./AiSegmentation.jsx"));
+const AiReporting = lazy(() => import("./AiReporting.jsx"));
 const ProjectDetailsPage = lazy(() => import("./ProjectDetailsPage.jsx"));
 
 const ProjectDetailsWrapper = ({ onBackToHome }) => {
@@ -28,9 +32,19 @@ const ProjectDetailsWrapper = ({ onBackToHome }) => {
       {slug === "ai-data-insights" && <AiInsights />}
       {slug === "ai-policy-bot" && <AiPolicyBot />}
       {slug === "ai-kyc" && <AiKyc />}
+      {slug === "ai-social-media" && <AiSocialMedia />}
+      {slug === "ai-recruitment" && <AiRecruitment />}
+      {slug === "ai-segmentation" && <AiSegmentation />}
+      {slug === "ai-reporting" && <AiReporting />}
 
       {/* 🔹 Default: normal project details page */}
-      {slug !== "ai-data-insights" && slug !== "ai-policy-bot" && slug !== "ai-kyc" && (
+      {slug !== "ai-data-insights" &&
+       slug !== "ai-policy-bot" &&
+       slug !== "ai-kyc" &&
+       slug !== "ai-social-media" &&
+       slug !== "ai-recruitment" &&
+       slug !== "ai-segmentation" &&
+       slug !== "ai-reporting" && (
         <ProjectDetailsPage
           project={project}
           onBackToHome={onBackToHome}

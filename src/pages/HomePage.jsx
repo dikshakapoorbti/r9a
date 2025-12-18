@@ -1,7 +1,60 @@
-import React, {useState} from "react";
+import React, { useState, lazy, Suspense } from "react";
 import { Code, Brain, Users, Rocket, ChevronRight, Mail, MapPin } from "lucide-react";
-import ContactForm from "../components/contact/ContactForm.jsx";
-import PROJECTS from "../components/constants/project.constant.js";
+
+// Lazy load ContactForm to reduce initial bundle size
+const ContactForm = lazy(() => import("../components/contact/ContactForm.jsx"));
+
+// Only load basic project info for the homepage - full details loaded on project pages
+const PROJECTS = [
+  {
+    title: "AI Data Insights & Churn Prediction",
+    slug: "ai-data-insights",
+    description: "Predict customer churn with 95% accuracy and forecast revenue trends using advanced machine learning",
+    category: "AI Analytics",
+    stats: "95% Accuracy",
+    image: "bg-gradient-to-br from-blue-500 to-blue-700",
+  },
+  {
+    title: "AI Social Media Manager with n8n",
+    slug: "ai-social-media",
+    description: "Automate social media posting, scheduling, and engagement across platforms with 90% time savings",
+    category: "AI Automation",
+    stats: "90% Time Saved",
+    image: "bg-gradient-to-br from-purple-500 to-purple-700",
+  },
+  {
+    title: "AI Recruitment Automation System",
+    slug: "ai-recruitment",
+    description: "Automated resume screening, candidate interview scheduling, and onboarding reducing hiring time by 70%",
+    category: "AI HR Tech",
+    stats: "70% Faster",
+    image: "bg-gradient-to-br from-indigo-500 to-indigo-700",
+  },
+  {
+    title: "AI Customer Segmentation Engine",
+    slug: "ai-segmentation",
+    description: "AI-powered customer segmentation for hyper-targeted marketing with 3x conversion improvement",
+    category: "AI Marketing",
+    stats: "3x Conversion",
+    image: "bg-gradient-to-br from-pink-500 to-pink-700",
+  },
+  {
+    title: "AI Reporting Automation with Excel & Sheets",
+    slug: "ai-reporting",
+    description: "Automated report generation from Excel/Google Sheets with AI-powered insights, saving 25 hours per week",
+    category: "AI Automation",
+    stats: "95% Automated",
+    image: "bg-gradient-to-br from-teal-500 to-teal-700",
+  },
+  {
+    title: "AI-Powered KYC Verification",
+    slug: "ai-kyc",
+    description: "Automate identity verification with 99% fraud detection, reducing onboarding time from days to minutes",
+    category: "AI Security",
+    stats: "99% Detection",
+    image: "bg-gradient-to-br from-green-500 to-green-700",
+  },
+];
 
 const HomePage = ({ onScrollToSection, onNavigateToProject }) => {
 
@@ -252,7 +305,14 @@ const HomePage = ({ onScrollToSection, onNavigateToProject }) => {
               <h3 className="text-2xl font-semibold text-gray-900 mb-6">
                 Request a Callback
               </h3>
-              <ContactForm />
+              <Suspense fallback={
+                <div className="text-center py-8">
+                  <div className="w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto"></div>
+                  <p className="text-slate-600 mt-2 text-sm">Loading form...</p>
+                </div>
+              }>
+                <ContactForm />
+              </Suspense>
             </div>
           </div>
         </div>

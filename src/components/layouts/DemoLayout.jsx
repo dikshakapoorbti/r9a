@@ -206,6 +206,207 @@ export default function DemoLayout({ title, subtitle, children, project }) {
                           </div>
                         </div>
                       )}
+
+                      {project.slug === "ai-social-media" && (
+                        <div className="space-y-4">
+                          {/* Top Layer */}
+                          <div className="text-center">
+                            <div className="inline-block bg-gradient-to-r from-purple-500 to-pink-600 text-white px-6 py-3 rounded-lg font-semibold shadow-md">
+                              📱 Multi-Platform Dashboard (React)
+                            </div>
+                          </div>
+
+                          <div className="flex justify-center">
+                            <div className="border-l-4 border-purple-400 h-8"></div>
+                          </div>
+
+                          {/* Middle Layer */}
+                          <div className="grid grid-cols-3 gap-4">
+                            <div className="bg-white border-2 border-purple-300 rounded-lg p-3 text-center shadow">
+                              <div className="text-2xl mb-1">🤖</div>
+                              <div className="text-xs font-semibold">n8n Workflows</div>
+                              <div className="text-xs text-slate-600">Automation Engine</div>
+                            </div>
+                            <div className="bg-white border-2 border-blue-300 rounded-lg p-3 text-center shadow">
+                              <div className="text-2xl mb-1">✨</div>
+                              <div className="text-xs font-semibold">AI Content Gen</div>
+                              <div className="text-xs text-slate-600">GPT-4 + DALL-E</div>
+                            </div>
+                            <div className="bg-white border-2 border-green-300 rounded-lg p-3 text-center shadow">
+                              <div className="text-2xl mb-1">💬</div>
+                              <div className="text-xs font-semibold">Auto-Response</div>
+                              <div className="text-xs text-slate-600">Comment Bot</div>
+                            </div>
+                          </div>
+
+                          <div className="flex justify-center">
+                            <div className="border-l-4 border-purple-400 h-8"></div>
+                          </div>
+
+                          {/* Bottom Layer */}
+                          <div className="grid grid-cols-2 gap-4">
+                            <div className="bg-white border-2 border-slate-300 rounded-lg p-3 text-center shadow">
+                              <div className="text-2xl mb-1">🔗</div>
+                              <div className="text-xs font-semibold">Social APIs</div>
+                            </div>
+                            <div className="bg-white border-2 border-slate-300 rounded-lg p-3 text-center shadow">
+                              <div className="text-2xl mb-1">📊</div>
+                              <div className="text-xs font-semibold">Analytics DB</div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
+                      {project.slug === "ai-recruitment" && (
+                        <div className="space-y-4">
+                          {/* Top Layer */}
+                          <div className="text-center">
+                            <div className="inline-block bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-6 py-3 rounded-lg font-semibold shadow-md">
+                              👥 HR Dashboard (React)
+                            </div>
+                          </div>
+
+                          <div className="flex justify-center">
+                            <div className="border-l-4 border-indigo-400 h-8"></div>
+                          </div>
+
+                          {/* Middle Layer */}
+                          <div className="grid grid-cols-4 gap-3">
+                            <div className="bg-white border-2 border-indigo-300 rounded-lg p-2 text-center shadow">
+                              <div className="text-xl mb-1">📄</div>
+                              <div className="text-xs font-semibold">Resume Parser</div>
+                            </div>
+                            <div className="bg-white border-2 border-purple-300 rounded-lg p-2 text-center shadow">
+                              <div className="text-xl mb-1">🎯</div>
+                              <div className="text-xs font-semibold">AI Matcher</div>
+                            </div>
+                            <div className="bg-white border-2 border-blue-300 rounded-lg p-2 text-center shadow">
+                              <div className="text-xl mb-1">📅</div>
+                              <div className="text-xs font-semibold">Auto-Scheduler</div>
+                            </div>
+                            <div className="bg-white border-2 border-green-300 rounded-lg p-2 text-center shadow">
+                              <div className="text-xl mb-1">📧</div>
+                              <div className="text-xs font-semibold">Comm Engine</div>
+                            </div>
+                          </div>
+
+                          <div className="flex justify-center">
+                            <div className="border-l-4 border-indigo-400 h-8"></div>
+                          </div>
+
+                          {/* Bottom Layer */}
+                          <div className="grid grid-cols-2 gap-4">
+                            <div className="bg-white border-2 border-slate-300 rounded-lg p-3 text-center shadow">
+                              <div className="text-2xl mb-1">🗄️</div>
+                              <div className="text-xs font-semibold">Candidate DB</div>
+                            </div>
+                            <div className="bg-white border-2 border-slate-300 rounded-lg p-3 text-center shadow">
+                              <div className="text-2xl mb-1">📆</div>
+                              <div className="text-xs font-semibold">Calendar APIs</div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
+                      {project.slug === "ai-segmentation" && (
+                        <div className="space-y-4">
+                          {/* Top Layer */}
+                          <div className="text-center">
+                            <div className="inline-block bg-gradient-to-r from-pink-500 to-purple-600 text-white px-6 py-3 rounded-lg font-semibold shadow-md">
+                              🎯 Marketing Dashboard (React)
+                            </div>
+                          </div>
+
+                          <div className="flex justify-center">
+                            <div className="border-l-4 border-pink-400 h-8"></div>
+                          </div>
+
+                          {/* Middle Layer */}
+                          <div className="grid grid-cols-3 gap-4">
+                            <div className="bg-white border-2 border-pink-300 rounded-lg p-3 text-center shadow">
+                              <div className="text-2xl mb-1">🧮</div>
+                              <div className="text-xs font-semibold">ML Clustering</div>
+                              <div className="text-xs text-slate-600">K-Means + XGBoost</div>
+                            </div>
+                            <div className="bg-white border-2 border-purple-300 rounded-lg p-3 text-center shadow">
+                              <div className="text-2xl mb-1">📊</div>
+                              <div className="text-xs font-semibold">RFM Analysis</div>
+                              <div className="text-xs text-slate-600">Behavioral Scoring</div>
+                            </div>
+                            <div className="bg-white border-2 border-blue-300 rounded-lg p-3 text-center shadow">
+                              <div className="text-2xl mb-1">🎯</div>
+                              <div className="text-xs font-semibold">Campaign Engine</div>
+                              <div className="text-xs text-slate-600">Auto-Targeting</div>
+                            </div>
+                          </div>
+
+                          <div className="flex justify-center">
+                            <div className="border-l-4 border-pink-400 h-8"></div>
+                          </div>
+
+                          {/* Bottom Layer */}
+                          <div className="grid grid-cols-2 gap-4">
+                            <div className="bg-white border-2 border-slate-300 rounded-lg p-3 text-center shadow">
+                              <div className="text-2xl mb-1">💾</div>
+                              <div className="text-xs font-semibold">Customer Data</div>
+                            </div>
+                            <div className="bg-white border-2 border-slate-300 rounded-lg p-3 text-center shadow">
+                              <div className="text-2xl mb-1">⚡</div>
+                              <div className="text-xs font-semibold">Apache Spark</div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
+                      {project.slug === "ai-reporting" && (
+                        <div className="space-y-4">
+                          {/* Top Layer */}
+                          <div className="text-center">
+                            <div className="inline-block bg-gradient-to-r from-teal-500 to-blue-600 text-white px-6 py-3 rounded-lg font-semibold shadow-md">
+                              📊 Report Generator (React)
+                            </div>
+                          </div>
+
+                          <div className="flex justify-center">
+                            <div className="border-l-4 border-teal-400 h-8"></div>
+                          </div>
+
+                          {/* Middle Layer */}
+                          <div className="grid grid-cols-3 gap-4">
+                            <div className="bg-white border-2 border-teal-300 rounded-lg p-3 text-center shadow">
+                              <div className="text-2xl mb-1">📄</div>
+                              <div className="text-xs font-semibold">Data Processor</div>
+                              <div className="text-xs text-slate-600">Pandas + NumPy</div>
+                            </div>
+                            <div className="bg-white border-2 border-blue-300 rounded-lg p-3 text-center shadow">
+                              <div className="text-2xl mb-1">🧠</div>
+                              <div className="text-xs font-semibold">AI Insights</div>
+                              <div className="text-xs text-slate-600">GPT-4 Analysis</div>
+                            </div>
+                            <div className="bg-white border-2 border-green-300 rounded-lg p-3 text-center shadow">
+                              <div className="text-2xl mb-1">📈</div>
+                              <div className="text-xs font-semibold">Chart Generator</div>
+                              <div className="text-xs text-slate-600">Plotly + Matplotlib</div>
+                            </div>
+                          </div>
+
+                          <div className="flex justify-center">
+                            <div className="border-l-4 border-teal-400 h-8"></div>
+                          </div>
+
+                          {/* Bottom Layer */}
+                          <div className="grid grid-cols-2 gap-4">
+                            <div className="bg-white border-2 border-slate-300 rounded-lg p-3 text-center shadow">
+                              <div className="text-2xl mb-1">📊</div>
+                              <div className="text-xs font-semibold">Excel/Sheets</div>
+                            </div>
+                            <div className="bg-white border-2 border-slate-300 rounded-lg p-3 text-center shadow">
+                              <div className="text-2xl mb-1">☁️</div>
+                              <div className="text-xs font-semibold">Cloud Storage</div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
                     </div>
 
                     <p className="text-slate-700 leading-relaxed mt-4">{project.hld.architecture}</p>

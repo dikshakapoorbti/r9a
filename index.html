@@ -5,7 +5,21 @@
     <!-- Favicon: expects company logo at public/r9a-logo.png -->
     <link rel="icon" type="image/png" href="/r9a-logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>r9a</title>
+
+    <!-- Performance optimizations -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://firestore.googleapis.com">
+    <link rel="dns-prefetch" href="https://api.emailjs.com">
+
+    <!-- Preload critical resources -->
+    <link rel="modulepreload" href="/src/main.jsx">
+
+    <!-- Optimize loading -->
+    <meta name="theme-color" content="#0F172A">
+
+    <title>r9a - AI Solutions & Software Development</title>
+    <meta name="description" content="Transform your business with cutting-edge AI solutions and modern software development from Retrospecta Solutions.">
   </head>
   <body>
     <div id="root"></div>

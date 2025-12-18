@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import { collection, addDoc } from "firebase/firestore";
 import { db, serverTimestamp } from "../../lib/firebase.js";
+import emailjs from '@emailjs/browser';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -95,33 +96,29 @@ const ContactForm = () => {
       // Save to Firebase
       await addDoc(collection(db, "contactRequests"), payload);
 
-      // Send email notification to admin
+      // Send email notification to admin using EmailJS
       try {
-        const emailPayload = {
-          to: "dikshakapoorbti@gmail.com",
-          subject: `New Contact Form Submission from ${formData.email}`,
-          message: `
-New Contact Form Submission:
-
-Email: ${formData.email.trim()}
-Phone: ${phoneE164}
-Company: ${formData.company.trim() || 'N/A'}
-
-Message:
-${formData.message.trim()}
-
-Submitted at: ${new Date().toLocaleString()}
-          `.trim(),
+        // EmailJS configuration
+        const emailParams = {
+          to_email: 'dikshakapoorbti@gmail.com',
+          from_name: formData.email.trim(),
+          from_email: formData.email.trim(),
+          phone: phoneE164,
+          company: formData.company.trim() || 'N/A',
+          message: formData.message.trim(),
+          submission_time: new Date().toLocaleString(),
         };
 
-        // Send email using the proxy endpoint
-        await fetch('/mailer.php', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(emailPayload),
-        });
+        // EmailJS credentials from environment variables
+        const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+        const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+        const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+        if (serviceId && templateId && publicKey) {
+          await emailjs.send(serviceId, templateId, emailParams, publicKey);
+        } else {
+          console.warn('EmailJS not configured. Please set up .env file with EmailJS credentials.');
+        }
       } catch (emailError) {
         console.error('Email notification failed:', emailError);
         // Continue even if email fails - data is saved in Firebase

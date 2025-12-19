@@ -6,8 +6,6 @@ import PROJECTS from "../components/constants/project.constant";
 export default function AiSegmentation() {
   const project = PROJECTS.find(p => p.slug === "ai-segmentation");
 
-  const totalCustomers = customerSegments.reduce((sum, seg) => sum + seg.size, 0);
-
   return (
     <DemoLayout
       title="AI Customer Segmentation Engine"

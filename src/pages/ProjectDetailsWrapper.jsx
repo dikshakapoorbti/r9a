@@ -1,20 +1,16 @@
 import { useParams } from "react-router-dom";
 import React, { lazy, Suspense } from "react";
-import PROJECTS from "../components/constants/project.constant.js";
 
-// Lazy load heavy demo components for better performance
-const AiPolicyBot = lazy(() => import("./AiPolicyBot.jsx"));
+// Lazy load demo components for better performance
 const AiKyc = lazy(() => import("./AiKyc.jsx"));
 const AiInsights = lazy(() => import("./AiInsights.jsx"));
 const AiSocialMedia = lazy(() => import("./AiSocialMedia.jsx"));
 const AiRecruitment = lazy(() => import("./AiRecruitment.jsx"));
 const AiSegmentation = lazy(() => import("./AiSegmentation.jsx"));
 const AiReporting = lazy(() => import("./AiReporting.jsx"));
-const ProjectDetailsPage = lazy(() => import("./ProjectDetailsPage.jsx"));
 
-const ProjectDetailsWrapper = ({ onBackToHome }) => {
+const ProjectDetailsWrapper = () => {
   const { slug } = useParams();
-  const project = PROJECTS.find((p) => p.slug === slug);
 
   // Loading fallback component
   const LoadingFallback = () => (
@@ -28,28 +24,13 @@ const ProjectDetailsWrapper = ({ onBackToHome }) => {
 
   return (
     <Suspense fallback={<LoadingFallback />}>
-      {/* 🔹 Render AI demos based on slug */}
+      {/* Render demo components based on project slug */}
       {slug === "ai-data-insights" && <AiInsights />}
-      {slug === "ai-policy-bot" && <AiPolicyBot />}
       {slug === "ai-kyc" && <AiKyc />}
       {slug === "ai-social-media" && <AiSocialMedia />}
       {slug === "ai-recruitment" && <AiRecruitment />}
       {slug === "ai-segmentation" && <AiSegmentation />}
       {slug === "ai-reporting" && <AiReporting />}
-
-      {/* 🔹 Default: normal project details page */}
-      {slug !== "ai-data-insights" &&
-       slug !== "ai-policy-bot" &&
-       slug !== "ai-kyc" &&
-       slug !== "ai-social-media" &&
-       slug !== "ai-recruitment" &&
-       slug !== "ai-segmentation" &&
-       slug !== "ai-reporting" && (
-        <ProjectDetailsPage
-          project={project}
-          onBackToHome={onBackToHome}
-        />
-      )}
     </Suspense>
   );
 };

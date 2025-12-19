@@ -4,7 +4,6 @@ import {
   Route,
   useNavigate,
   useLocation,
-  useParams,
 } from "react-router-dom";
 
 import Navigation from "./components/navigation/Navigation.jsx";
@@ -126,9 +125,7 @@ const App = () => {
 
           <Route
             path="/project/:slug"
-            element={
-              <ProjectDetailsWrapper onBackToHome={handleBackToHome} />
-            }
+            element={<ProjectDetailsWrapper />}
           />
         </Routes>
       </Suspense>

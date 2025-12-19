@@ -106,56 +106,6 @@ export default function DemoLayout({ title, subtitle, children, project }) {
                         </div>
                       )}
 
-                      {project.slug === "ai-policy-bot" && (
-                        <div className="space-y-4">
-                          {/* Top Layer */}
-                          <div className="text-center">
-                            <div className="inline-block bg-gradient-to-r from-purple-500 to-pink-600 text-white px-6 py-3 rounded-lg font-semibold shadow-md">
-                              💬 Conversational Interface (React)
-                            </div>
-                          </div>
-
-                          <div className="flex justify-center">
-                            <div className="border-l-4 border-purple-400 h-8"></div>
-                          </div>
-
-                          {/* Middle Layer */}
-                          <div className="grid grid-cols-3 gap-4">
-                            <div className="bg-white border-2 border-purple-300 rounded-lg p-3 text-center shadow">
-                              <div className="text-2xl mb-1">🧠</div>
-                              <div className="text-xs font-semibold">LLM Integration</div>
-                              <div className="text-xs text-slate-600">OpenAI GPT-4</div>
-                            </div>
-                            <div className="bg-white border-2 border-blue-300 rounded-lg p-3 text-center shadow">
-                              <div className="text-2xl mb-1">🔍</div>
-                              <div className="text-xs font-semibold">Vector Search</div>
-                              <div className="text-xs text-slate-600">ChromaDB</div>
-                            </div>
-                            <div className="bg-white border-2 border-green-300 rounded-lg p-3 text-center shadow">
-                              <div className="text-2xl mb-1">⚙️</div>
-                              <div className="text-xs font-semibold">RAG Engine</div>
-                              <div className="text-xs text-slate-600">LangChain</div>
-                            </div>
-                          </div>
-
-                          <div className="flex justify-center">
-                            <div className="border-l-4 border-purple-400 h-8"></div>
-                          </div>
-
-                          {/* Bottom Layer */}
-                          <div className="grid grid-cols-2 gap-4">
-                            <div className="bg-white border-2 border-slate-300 rounded-lg p-3 text-center shadow">
-                              <div className="text-2xl mb-1">📄</div>
-                              <div className="text-xs font-semibold">Document Processing</div>
-                            </div>
-                            <div className="bg-white border-2 border-slate-300 rounded-lg p-3 text-center shadow">
-                              <div className="text-2xl mb-1">☁️</div>
-                              <div className="text-xs font-semibold">Storage (AWS S3)</div>
-                            </div>
-                          </div>
-                        </div>
-                      )}
-
                       {project.slug === "ai-kyc" && (
                         <div className="space-y-4">
                           {/* Top Layer */}

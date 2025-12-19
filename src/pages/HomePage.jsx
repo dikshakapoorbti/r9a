@@ -1,4 +1,4 @@
-import React, { useState, lazy, Suspense } from "react";
+import React, { lazy, Suspense } from "react";
 import { Code, Brain, Users, Rocket, ChevronRight, Mail, MapPin } from "lucide-react";
 
 // Lazy load ContactForm to reduce initial bundle size

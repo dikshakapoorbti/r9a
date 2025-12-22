@@ -160,7 +160,8 @@ const App = () => {
           </div>
 
           <div className="border-t border-gray-800 mt-8 pt-6 text-center text-gray-400">
-            © 2025 Retrospecta Solutions
+            <p>© 2025 Retrospecta Solutions</p>
+            <p className="text-xs mt-2 text-gray-500">v1.0.0 • Dec 22, 2025</p>
           </div>
         </div>
       </footer>

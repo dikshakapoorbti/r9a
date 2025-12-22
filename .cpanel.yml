@@ -1,0 +1,17 @@
+---
+deployment:
+  tasks:
+    # Set the deployment path - REPLACE 'username' with your actual cPanel username
+    - export DEPLOYPATH=/home1/r9ainbd4/public_html/
+
+    # Install dependencies
+    - /bin/npm install
+
+    # Build the production bundle
+    - /bin/npm run build
+
+    # Copy built files to deployment directory
+    - /bin/cp -R dist/* $DEPLOYPATH
+
+    # Copy .htaccess for React Router support
+    - /bin/cp .htaccess $DEPLOYPATH

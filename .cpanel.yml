@@ -2,6 +2,6 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home1/r9ainbd4/public_html/
-    - /bin/bash deploy.sh
     - /bin/cp -R dist/* $DEPLOYPATH
     - /bin/cp .htaccess $DEPLOYPATH
+    - /bin/cp dist/index.html $DEPLOYPATH

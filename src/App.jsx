@@ -161,7 +161,9 @@ const App = () => {
 
           <div className="border-t border-gray-800 mt-8 pt-6 text-center text-gray-400">
             <p>© 2025 Retrospecta Solutions</p>
-            <p className="text-xs mt-2 text-gray-500">v1.0.0 • Dec 22, 2025</p>
+            <p className="text-xs mt-2 text-gray-500">
+              v1.0.1 • Dec 22, 2025 • Build: {new Date().toISOString().split('T')[0]}
+            </p>
           </div>
         </div>
       </footer>

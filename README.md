@@ -165,8 +165,6 @@ The contact form integrates EmailJS (email delivery) and Firebase (data storage)
 
 **Note:** The MongoDB cluster mentioned in old docs is no longer used. Firebase is the current backend.
 
-**For detailed setup, see [EMAIL_SETUP.md](EMAIL_SETUP.md)**
-
 ---
 
 ## 🚢 Deployment to cPanel
@@ -397,7 +395,6 @@ npm run lint -- --fix
 - **README.md** (this file) - Complete project guide
 - **[DEPLOYMENT_STEPS.md](DEPLOYMENT_STEPS.md)** - Deployment walkthrough
 - **[TROUBLESHOOTING.md](TROUBLESHOOTING.md)** - Common issues and fixes
-- **[EMAIL_SETUP.md](EMAIL_SETUP.md)** - Contact form configuration
 
 ---
 

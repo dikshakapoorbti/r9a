@@ -1,6 +1,4 @@
 import React, { useState, useRef } from "react";
-import { collection, addDoc } from "firebase/firestore";
-import { db, serverTimestamp } from "../../lib/firebase.js";
 import emailjs from '@emailjs/browser';
 
 const ContactForm = () => {
@@ -84,15 +82,22 @@ const ContactForm = () => {
     setIsSubmitted(true);
 
     const phoneE164 = `${countryCode}${phoneDigits}`;
-    const payload = {
-      email: formData.email.trim(),
-      phone: phoneE164,
-      company: formData.company.trim(),
-      message: formData.message.trim(),
-      createdAt: serverTimestamp(),
-    };
 
     try {
+      // Lazy load Firebase only when form is submitted (saves ~73KB on initial load)
+      const [{ collection, addDoc }, { db, serverTimestamp }] = await Promise.all([
+        import("firebase/firestore"),
+        import("../../lib/firebase.js")
+      ]);
+
+      const payload = {
+        email: formData.email.trim(),
+        phone: phoneE164,
+        company: formData.company.trim(),
+        message: formData.message.trim(),
+        createdAt: serverTimestamp(),
+      };
+
       // Save to Firebase
       await addDoc(collection(db, "contactRequests"), payload);
 

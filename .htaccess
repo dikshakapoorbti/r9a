@@ -9,9 +9,14 @@
   RewriteCond %{REQUEST_FILENAME} !-l
   RewriteRule . /index.html [L]
 
-  # Gzip compression
+  # Brotli compression (better than Gzip - 15-20% smaller files)
+  <IfModule mod_brotli.c>
+    AddOutputFilterByType BROTLI_COMPRESS text/html text/plain text/xml text/css text/javascript application/javascript application/x-javascript application/json image/svg+xml
+  </IfModule>
+
+  # Gzip compression (fallback if Brotli not available)
   <IfModule mod_deflate.c>
-    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/x-javascript application/json
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/x-javascript application/json image/svg+xml
   </IfModule>
 
   # Browser caching
